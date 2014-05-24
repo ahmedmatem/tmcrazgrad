@@ -1,0 +1,21 @@
+﻿@model TMC.Web.Areas.Admin.Models.AboutUsViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">За нас</div>
+
+@using (Html.BeginForm("Index", "AboutUs", FormMethod.Post, new { role = "form", id = "about-us-form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Content)
+        @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-default">Запази</button>
+}
+

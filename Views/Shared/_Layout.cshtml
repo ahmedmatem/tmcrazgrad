@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        @*<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />*@
+
+        <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+        @*@Styles.Render("~/Content/css")*@
+        <link href="~/Content/Site.css" rel="stylesheet" />
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+
+    <body>
+
+        <div id="header-wrapper">
+            <div id="header">
+                <nav>
+                    <ul id="menu">
+                        <li><a href="~/">За нас</a></li>
+                        <li>
+                            <a href="#"><i class="fa fa-caret-down"></i> ДТ "Антон Страшимиров"</a>
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fa fa-caret-right"></i> Театърът</a>
+                                    <ul>
+                                        <li><a href="#">История</a></li>
+                                        <li><a href="#">Сцена</a></li>
+                                        <li><a href="#">Зала</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-caret-right"></i> Екип</a>
+                                    <ul>
+                                        <li><a href="#">Администрация</a></li>
+                                        <li><a href="#">Актьори</a></li>
+                                        <li><a href="#">Техн. служби</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Репертоар</a></li>
+                                <li><a href="#">Програма</a></li>
+                                <li><a href="#">Архив</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Филхармония "Проф. Димитър Ненов"</a></li>
+                        <li><a href="#">Сцена "Назъм Хикмет"</a></li>
+                        <li><a href="#">Контакти</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>        
+
+        <div id="content">
+            @RenderBody()
+        </div>
+
+        <footer>
+            Footer
+        </footer>  
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script src="~/Scripts/bootstrap.min.js"></script>
+
+        @RenderSection("scripts", required: false)
+
+        <script>
+            $(function () {
+                if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
+                    $('li').has('ul').mouseover(function () {
+                        $(this).children('ul').show();
+                    }).mouseout(function () {
+                        $(this).children('ul').hide();
+                    })
+                }
+            });
+        </script>
+    </body>
+
+</html>
