@@ -17,9 +17,11 @@
 </head>
 <body>
 
+    
+
     <div id="header" class="row">
         <h2 id="title">Администрация</h2>
-        <form action="../account/logoff" method="post" class="pull-right" id="logout-form">
+        <form action="@Url.Content("~/account/logoff")" method="post" class="pull-right" id="logout-form">
             @Html.AntiForgeryToken()
             <button type="submit" class="btn btn-danger"><i class="fa fa-sign-out"></i> Изход</button>
         </form>
@@ -34,7 +36,7 @@
                     <li>
                         <a href="#"><i class="fa fa-caret-right"></i> Театърът</a>
                         <ul>
-                            <li><a href="#">История</a></li>
+                            <li><a href="~/admin/theatre/history">История</a></li>
                             <li><a href="#">Сцена</a></li>
                             <li><a href="#">Зала</a></li>
                         </ul>

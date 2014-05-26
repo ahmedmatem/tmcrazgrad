@@ -71,6 +71,9 @@ h5, h6 {
     }
 
 
+#file {
+    display: none;
+}
 /* main layout
 ----------------------------------------------------------*/
 #header {
@@ -361,6 +364,18 @@ nav {
     height: 300px;
 }
 
+/* DT Theatre.History */
+#theatre-history-form textarea {
+    height: 200px;
+}
+
+#image-container {
+    margin-top: 10px;
+}
+
+    #image-container button[type="submit"] {
+        display: none;
+    }
 
 /* page elements
 ----------------------------------------------------------*/

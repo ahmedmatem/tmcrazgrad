@@ -1,0 +1,60 @@
+﻿@model TMC.Web.Areas.Admin.Models.DT.Theatre.HistoryViewModel
+
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header"><strong>ДТ "АНТОН СТРАШИМИРОВ"</strong> / Театърът / История</div>
+
+@using (Html.BeginForm("History", "Theatre", FormMethod.Post, new { role = "form", id = "theatre-history-form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="">История</label>
+        @Html.TextAreaFor(m => m.History.Content, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Запази</button>
+}
+
+<div id="image-container">
+
+    @using (Html.BeginForm("HistoryImage", "Theatre", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.TextBoxFor(m => m.Image, new { type = "file", id = "file", name = "file" })
+
+        <div class="form-group">
+            <button class="btn btn-default" id="upload-button"><i class="fa fa-search"></i> Избери нова картинка</button>
+            <button type="submit" id="submit-image" class="btn btn-success"><i class="fa fa-plus"></i> Добави</button>
+            <span id="file-name"></span>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-xs-6 col-md-2">
+            <a href="#" class="thumbnail">
+                <img data-src="holder.js/100%x180" alt="...">
+            </a>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $("#upload-button").click(function (e) {
+            e.preventDefault();
+
+            $("#file").click();
+
+            return false;
+        });
+
+        $('input[type=file]').change(function (e) {
+            $("#submit-image").show();
+            $("#file-name").html($(this).val());
+        });
+    </script>
+}
