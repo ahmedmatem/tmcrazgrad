@@ -17,7 +17,7 @@
 
         public ActionResult Index()
         {
-            AboutUs aboutUs = this.dbContext.AboutUs.FirstOrDefault();
+            AboutUs aboutUs = this.tmcContext.AboutUs.FirstOrDefault();
             AboutUsViewModel model = new AboutUsViewModel();
 
             if (aboutUs != null)
@@ -35,7 +35,7 @@
         [ValidateInput(false)]
         public ActionResult Index(AboutUsViewModel model)
         {
-            AboutUs aboutUs = this.dbContext.AboutUs.FirstOrDefault();
+            AboutUs aboutUs = this.tmcContext.AboutUs.FirstOrDefault();
 
             if (aboutUs == null)
             {
@@ -43,7 +43,7 @@
                 aboutUs = new AboutUs();
                 aboutUs.Content = model.Content;
 
-                dbContext.AboutUs.Add(aboutUs);
+                this.tmcContext.AboutUs.Add(aboutUs);
             }
             else
             {
@@ -51,7 +51,7 @@
                 aboutUs.Content = model.Content;
             }
 
-            this.dbContext.SaveChanges();
+            this.tmcContext.SaveChanges();
 
             return RedirectToAction("Index");
         }

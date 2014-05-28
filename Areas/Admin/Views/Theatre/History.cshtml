@@ -13,7 +13,7 @@
 
     <div class="form-group">
         <label for="">История</label>
-        @Html.TextAreaFor(m => m.History.Content, new { @class = "form-control" })
+        @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
     </div>
 
     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Запази</button>
@@ -33,13 +33,41 @@
         </div>
     }
 
-    <div class="row">
-        <div class="col-xs-6 col-md-2">
-            <a href="#" class="thumbnail">
-                <img data-src="holder.js/100%x180" alt="...">
-            </a>
-        </div>
-    </div>
+    @if (@Model.Images != null)
+    {
+        int i = 0;
+        foreach (var img in @Model.Images)
+        {
+            if(i % 4 == 0){
+                @Html.Raw("<div class='row thumbnail-history'>");
+            }
+            i++;
+                <div class="col-xs-6 col-md-3" id="@img.ImageId">
+                    <div class="thumbnail">
+                        @Model.Cloudinary.Api.UrlImgUp.BuildImageTag(img.Url,
+                            new CloudinaryDotNet.StringDictionary("alt=Сграда на театъра"))
+                        <div class="caption">
+                            <h3>Описание</h3>
+                            <p>
+                                @Html.TextAreaFor(m => img.Description, new { @class = "description", id = "description_" + img.Url.Split(new char[] { '.' })[0] })
+                            </p>
+                            <p id="@img.Url">
+                                <button class="btn btn-default">Запази</button>
+                                <button class="btn btn-danger">Изтрий</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            if(i % 4 == 0){
+                @Html.Raw("</div>");
+            }
+        }
+        if (i % 4 != 0)
+        {
+            @Html.Raw("</div>");
+        }
+
+    }
 </div>
 
 @section scripts{
@@ -55,6 +83,27 @@
         $('input[type=file]').change(function (e) {
             $("#submit-image").show();
             $("#file-name").html($(this).val());
+        });
+
+        $(".thumbnail button").click(function () {
+            var buttonName = $(this).html();
+            var imgUrl = $(this).parent().attr("id");
+
+            if (buttonName == "Изтрий") {
+                $.get("@Url.Content("~/admin/theatre/delete")",
+                        { imageUrl: imgUrl },
+                        function (result) {
+                            var imageId = result.imageId;
+                            $("#" + imageId).hide();
+                        }, "json");
+                }
+            else if (buttonName == "Запази") {
+                var descriptionId = "description_" + imgUrl.split(".")[0];
+                var descript = $("#" + descriptionId).val();
+
+                $.get("@Url.Content("~/admin/theatre/UpdateDescription")",
+                    { imageUrl: imgUrl, description: descript });
+            }
         });
     </script>
 }

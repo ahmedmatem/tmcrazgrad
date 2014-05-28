@@ -377,6 +377,11 @@ nav {
         display: none;
     }
 
+.thumbnail-history .description {
+    width: 100%;
+    height: 70px;
+}
+
 /* page elements
 ----------------------------------------------------------*/
 /* featured */

@@ -93,5 +93,3 @@ C:\Users\ahmed\Documents\Visual Studio 2013\Projects\TMC\TMC.Web\bin\EntityFrame
 C:\Users\ahmed\Documents\Visual Studio 2013\Projects\TMC\TMC.Web\bin\CloudinaryDotNet.dll
 C:\Users\ahmed\Documents\Visual Studio 2013\Projects\TMC\TMC.Web\bin\TMC.Data.dll
 C:\Users\ahmed\Documents\Visual Studio 2013\Projects\TMC\TMC.Web\bin\TMC.Models.dll
-C:\Users\ahmed\Documents\Visual Studio 2013\Projects\TMC\TMC.Web\bin\TMC.Data.pdb
-C:\Users\ahmed\Documents\Visual Studio 2013\Projects\TMC\TMC.Web\bin\TMC.Models.pdb

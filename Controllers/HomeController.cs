@@ -12,15 +12,7 @@
     {
         public ActionResult Index()
         {
-            AboutUs aboutUs = this.dbContext.AboutUs.FirstOrDefault();
-            var model = new AboutUsViewModel();
-
-            if (aboutUs != null)
-            {
-                model.Content = aboutUs.Content;
-            }
-
-            return View(model);
+            return View();
         }
     }
 }
