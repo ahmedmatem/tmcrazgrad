@@ -1,0 +1,42 @@
+﻿@model TMC.Web.Models.DT.Theatre.HistoryViewModel
+
+@{
+    ViewBag.Title = "История - ДТ\"Антон Страшимиров\"";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="article">
+    @Html.Raw(Model.Content)
+
+    @if (@Model.Images != null)
+    {
+        int i = 0;
+        foreach (var img in @Model.Images)
+        {
+            if (i % 2 == 0)
+            {
+                @Html.Raw("<div class='row dt-image-container'>");
+            }
+            i++;
+            <div class="col-xs-6 col-md-6">
+                <div class="thumbnail">
+                    @Model.Cloudinary.Api.UrlImgUp.BuildImageTag(img.Url,
+                            new CloudinaryDotNet.StringDictionary("alt=Сграда на театъра"))
+                    <div class="caption">
+                        <p>
+                            @img.Description
+                        </p>
+                    </div>
+                </div>
+            </div>
+            if (i % 2 == 0)
+            {
+                @Html.Raw("</div>");
+            }
+        }
+        if (i % 2 != 0)
+        {
+            @Html.Raw("</div>");
+        }
+    }
+</div>

@@ -361,12 +361,24 @@ input[class='form-control'], .btn {
 
 /* articles */
 .article {
-    font-size: 1.4em;
+    font-size: 1.2em;
     text-align: justify;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     padding: 20px;
 }
+
+    .article .dt-image-container {
+        margin-top: 20px;
+    }
+
+        .article .dt-image-container .thumbnail {
+            background-color: transparent;
+        }
+
+            .article .dt-image-container .thumbnail p {
+                font-size: 0.8em;
+            }
 
     .article p {
         margin: 0;
